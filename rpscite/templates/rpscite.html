@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가위바위보</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #49e186;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  main {
+    padding: 30px;
+    text-align: center;
+    background-color: #2e2e2e;
+    color: white;
+  }
+  .game-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .game-option {
+    margin: 0 10px;
+    padding: 50px;
+  }
+  #result {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  footer {
+    background-color: #49e186;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>가위바위보 게임</h1>
+</header>
+
+<main>
+  <section id="game">
+    <h2>가위바위보</h2>
+    <div class="game-options">
+      <button class="game-option" onclick="play('가위')">가위</button>
+      <button class="game-option" onclick="play('바위')">바위</button>
+      <button class="game-option" onclick="play('보')">보</button>
+    </div>
+    <div id="result"></div>
+  </section>
+</main>
+
+<footer>
+  Joho.
+</footer>
+
+<script>
+  function play(userChoice) {
+    const choices = ['가위', '바위', '보'];
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+    let result;
+
+    if (userChoice === computerChoice) {
+      result = '비겼습니다!';
+    } else if (
+      (userChoice === '가위' && computerChoice === '보') ||
+      (userChoice === '바위' && computerChoice === '가위') ||
+      (userChoice === '보' && computerChoice === '바위')
+    ) {
+      result = '이겼습니다!';
+    } else {
+      result = '졌습니다!';
+    }
+
+    document.getElementById('result').innerText = `당신은 ${userChoice}를 선택했고, 컴퓨터는 ${computerChoice}를 선택했습니다. ${result}`;
+  }
+</script>
+
+</body>
+</html>
